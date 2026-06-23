@@ -4,8 +4,6 @@ Your space suit for Red Hat OpenShift AI. Embark on a hands-on journey from zero
 
 ![OpenShift AI Odyssey learning path](docs/images/rhoai-learning-path.png)
 
-## Learning path — OpenShift AI 3.4
-
 A hands-on path for small teams. Pair people from different backgrounds so each mission covers both **platform** and **application** work.
 
 Follow the missions from the **Sun** outward — through the inner planets, across the **asteroid belt**, and into the outer system.
