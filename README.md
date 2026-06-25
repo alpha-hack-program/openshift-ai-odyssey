@@ -38,7 +38,7 @@ Everything orbits from here. Goal: OCP 4.20 on AWS IPI with RHOAI 3.4 running on
 - Log in to the cluster (kubeadmin credentials provided by RHDP or your cluster admin)
 - Verify cluster health: `oc get nodes` and `oc get clusteroperators`
 - Install the [Red Hat OpenShift AI Operator](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/3.4/html/installing_and_uninstalling_openshift_ai_self-managed) (`stable-3.x` channel — latest GA)
-- Create a `DataScienceCluster` with core components (dashboard, workbenches, pipelines, kserve)
+- Create a `DataScienceCluster` with core components (`dashboard`, `workbenches`, `aipipelines`, `kserve`) — other components are activated in later missions
 - Verify storage classes and PVC provisioning for user workloads
 
 **Science Crew** 💻

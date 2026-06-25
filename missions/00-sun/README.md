@@ -82,8 +82,6 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: redhat-ods-operator
-  labels:
-    opendatahub.io/generated-namespace: "true"
 EOF
 ```
 
@@ -129,27 +127,51 @@ rhods-operator.v3.x.x    Red Hat OpenShift AI     3.x.x     Succeeded
 
 #### 5. Create the DataScienceCluster
 
+The `DataScienceCluster` enables individual RHOAI components. In this mission we bring up only the core baseline — additional components are activated in the mission that needs them.
+
 ```bash
 cat <<EOF | oc apply -f -
-apiVersion: datasciencecluster.opendatahub.io/v1
+apiVersion: datasciencecluster.opendatahub.io/v2
 kind: DataScienceCluster
 metadata:
   name: default-dsc
 spec:
   components:
+    # --- Sun baseline (enabled now) ---
     dashboard:
       managementState: Managed
     workbenches:
+      workbenchNamespace: rhods-notebooks
       managementState: Managed
-    datasciencepipelines:
+    aipipelines:
       managementState: Managed
     kserve:
       managementState: Managed
-      serving:
-        managementState: Managed
-        name: knative-serving
-    modelmeshserving:
-      managementState: Managed
+      rawDeploymentServiceConfig: Headless
+
+    # --- Mission 4 · Mars (distributed workloads) ---
+    ray:
+      managementState: Removed
+    trainingoperator:
+      managementState: Removed
+    kueue:
+      managementState: Removed
+
+    # --- Mission 5 · Jupiter (experimentation & tracking) ---
+    mlflowoperator:
+      managementState: Removed
+
+    # --- Mission 6 · Saturn (model evaluation & guardrails) ---
+    trustyai:
+      managementState: Removed
+
+    # --- Deep Space (optional stretch goals) ---
+    modelregistry:
+      managementState: Removed
+    feastoperator:
+      managementState: Removed
+    llamastackoperator:
+      managementState: Removed
 EOF
 ```
 
@@ -159,34 +181,6 @@ oc get datasciencecluster default-dsc -o jsonpath='{.status.phase}'
 ```
 
 Expected: `Ready` (this may take several minutes while all component pods start).
-
-#### 6. Verify storage classes
-
-```bash
-oc get storageclass
-```
-
-Confirm at least one storage class is marked `(default)`. On AWS with RHDP this is typically `gp3-csi`. Test that it can provision PVCs:
-
-```bash
-oc new-project test-storage
-cat <<EOF | oc apply -f -
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: test-pvc
-  namespace: test-storage
-spec:
-  accessModes: [ReadWriteOnce]
-  resources:
-    requests:
-      storage: 1Gi
-EOF
-oc get pvc -n test-storage
-oc delete project test-storage
-```
-
-Expected: PVC reaches `Bound` state within 30 seconds.
 
 ### Science Crew 💻
 
