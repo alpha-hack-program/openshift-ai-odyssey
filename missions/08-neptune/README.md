@@ -1,8 +1,5 @@
 # Mission 8 — Neptune · Agentic RAG with OGX
 
-> [!IMPORTANT]
-> If you are a Red Hatter, you can order a lab environment on the [Red Hat Demo Platform](https://catalog.demo.redhat.com/catalog?item=babylon-catalog-prod/sandboxes-gpte.sandbox-open.prod&utm_source=webapp&utm_medium=share-link). Request environment `Red Hat Open Environments` > `AWS Blank Open Environment`
-
 ## Mission Briefing
 
 Neptune is the last planet — cold, distant, and the most complex to reach. This mission is the culmination of the Odyssey: you'll deploy OGX (an OpenAI-compatible agentic API server), wire it to your model endpoint, upload documents to a vector store, and build a RAG application that retrieves from your own data. The agent reasons across documents, calls tools, and cites its sources. That's not just AI — that's enterprise-grade agentic intelligence running on your cluster. 🌊🤖

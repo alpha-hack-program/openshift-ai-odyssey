@@ -1,8 +1,5 @@
 # 🌙 Moon · GPT-OSS-20B (Optional)
 
-> [!IMPORTANT]
-> If you are a Red Hatter, you can order a lab environment on the [Red Hat Demo Platform](https://catalog.demo.redhat.com/catalog?item=babylon-catalog-prod/sandboxes-gpte.sandbox-open.prod&utm_source=webapp&utm_medium=share-link). Request environment `Red Hat Open Environments` > `AWS Blank Open Environment`
-
 > [!NOTE]
 > The Moon orbits Earth — this mission is **optional** and depends on having real GPU capacity. Skip it if your hardware cannot fit a 20B-parameter model and proceed directly to Mission 4 (Mars).
 

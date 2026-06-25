@@ -1,8 +1,5 @@
 # Mission 2 — Venus · GPU Power-up
 
-> [!IMPORTANT]
-> If you are a Red Hatter, you can order a lab environment on the [Red Hat Demo Platform](https://catalog.demo.redhat.com/catalog?item=babylon-catalog-prod/sandboxes-gpte.sandbox-open.prod&utm_source=webapp&utm_medium=share-link). Request environment `Red Hat Open Environments` > `AWS Blank Open Environment`
-
 ## Mission Briefing
 
 Venus is shrouded in heat and mystery — and so is the GPU. This mission electrifies the cluster: you'll either bring real NVIDIA GPU nodes online on AWS, or deploy the fake-gpu-operator to simulate them for learning purposes. Without this mission, model serving stays firmly in CPU territory. Pick your track, fire your thrusters, and get those accelerators online. ⚡🔥

@@ -1,8 +1,5 @@
 # Mission 1 — Mercury · Notebook Playground
 
-> [!IMPORTANT]
-> If you are a Red Hatter, you can order a lab environment on the [Red Hat Demo Platform](https://catalog.demo.redhat.com/catalog?item=babylon-catalog-prod/sandboxes-gpte.sandbox-open.prod&utm_source=webapp&utm_medium=share-link). Request environment `Red Hat Open Environments` > `AWS Blank Open Environment`
-
 ## Mission Briefing
 
 Mercury is the first planet from the Sun — small, fast, and close to the action. This mission is your first contact with the RHOAI science interface: workbenches. You'll spin up a Jupyter notebook environment, run your first AI-adjacent code, and prove that your workspace survives a restart. Think of it as lighting the engines for the first time. 🛸

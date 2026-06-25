@@ -1,8 +1,5 @@
 # Mission 4 — Mars · Distributed Workloads
 
-> [!IMPORTANT]
-> If you are a Red Hatter, you can order a lab environment on the [Red Hat Demo Platform](https://catalog.demo.redhat.com/catalog?item=babylon-catalog-prod/sandboxes-gpte.sandbox-open.prod&utm_source=webapp&utm_medium=share-link). Request environment `Red Hat Open Environments` > `AWS Blank Open Environment`
-
 ## Mission Briefing
 
 Mars is the last frontier of the inner system — red, rugged, and demanding real engineering muscle. This mission transforms your cluster from a single-model server into a distributed AI training platform. You'll enable Kueue for workload queuing, configure hardware profiles, and submit your first multi-node training job. This is the last stop before the asteroid belt. Cross it only when everything here is working. ⚔️🪐

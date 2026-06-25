@@ -1,8 +1,5 @@
 # Mission 7 — Uranus · Models-as-a-Service (MaaS)
 
-> [!IMPORTANT]
-> If you are a Red Hatter, you can order a lab environment on the [Red Hat Demo Platform](https://catalog.demo.redhat.com/catalog?item=babylon-catalog-prod/sandboxes-gpte.sandbox-open.prod&utm_source=webapp&utm_medium=share-link). Request environment `Red Hat Open Environments` > `AWS Blank Open Environment`
-
 ## Mission Briefing
 
 Uranus rotates on its side — unorthodox, and quietly powerful. MaaS is your model governance layer: token-gated access, usage tracking, and quota enforcement for any deployed model. Think of it as Mission Control issuing launch authorisations — not every crew member can fire the rockets whenever they want. This mission publishes your model through a governed API gateway and verifies that only authorised callers get through. 🔐🛸

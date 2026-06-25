@@ -1,8 +1,5 @@
 # Mission 3 — Earth · Model Serving
 
-> [!IMPORTANT]
-> If you are a Red Hatter, you can order a lab environment on the [Red Hat Demo Platform](https://catalog.demo.redhat.com/catalog?item=babylon-catalog-prod/sandboxes-gpte.sandbox-open.prod&utm_source=webapp&utm_medium=share-link). Request environment `Red Hat Open Environments` > `AWS Blank Open Environment`
-
 ## Mission Briefing
 
 Earth is the home of life — and this mission brings your cluster to life with AI inference. You'll deploy a language model from the RHOAI model catalog and expose it as an API endpoint. No specific model is required yet (save the GPU monster for the Moon); the goal is to understand the serving stack — KServe, vLLM, and llm-d — and get a model talking. First contact with AI in production. 🌍🤖

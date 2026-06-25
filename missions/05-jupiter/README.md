@@ -1,8 +1,5 @@
 # Mission 5 — Jupiter · Experimenting
 
-> [!IMPORTANT]
-> If you are a Red Hatter, you can order a lab environment on the [Red Hat Demo Platform](https://catalog.demo.redhat.com/catalog?item=babylon-catalog-prod/sandboxes-gpte.sandbox-open.prod&utm_source=webapp&utm_medium=share-link). Request environment `Red Hat Open Environments` > `AWS Blank Open Environment`
-
 ## Mission Briefing
 
 Jupiter is the largest planet in the solar system — and this mission is the broadest in the Odyssey. You've crossed the asteroid belt. Now the Science Crew takes the helm. Jupiter is where experiments run at scale: Kubeflow Pipelines for reproducibility, MLflow for tracking, and Training Hub for fine-tuning. Connect the dots between data, models, and metrics. This is where good science becomes great engineering. 🔭🧪

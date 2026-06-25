@@ -1,8 +1,5 @@
 # Mission 6 — Saturn · TrustyAI
 
-> [!IMPORTANT]
-> If you are a Red Hatter, you can order a lab environment on the [Red Hat Demo Platform](https://catalog.demo.redhat.com/catalog?item=babylon-catalog-prod/sandboxes-gpte.sandbox-open.prod&utm_source=webapp&utm_medium=share-link). Request environment `Red Hat Open Environments` > `AWS Blank Open Environment`
-
 ## Mission Briefing
 
 Saturn is encircled by rings — and this mission puts rings of trust around your AI. TrustyAI brings two critical guardrails to your stack: EvalHub for systematic model evaluation across benchmarks, and NeMo Guardrails for runtime prompt filtering. By the end of this mission, you'll know both *how good* your model is and *how safe* it is. Responsible AI isn't optional — it's load-bearing. 💫🛡️
