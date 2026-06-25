@@ -1,5 +1,8 @@
 # Mission 2 — Venus · GPU Power-up
 
+> [!NOTE]
+> **Did you know?** A day on Venus is longer than a year on Venus. It rotates so slowly — and backwards compared to most planets — that the Sun rises in the west and sets in the east. Also, at 465 °C on the surface, it is hotter than Mercury despite being twice as far from the Sun.
+
 ## Mission Briefing
 
 Venus is shrouded in heat and mystery — and so is the GPU. This mission electrifies the cluster: you'll either bring real NVIDIA GPU nodes online on AWS, or deploy the fake-gpu-operator to simulate them for learning purposes. Without this mission, model serving stays firmly in CPU territory. Pick your track, fire your thrusters, and get those accelerators online. ⚡🔥

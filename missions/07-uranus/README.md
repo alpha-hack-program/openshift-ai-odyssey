@@ -1,5 +1,8 @@
 # Mission 7 — Uranus · Models-as-a-Service (MaaS)
 
+> [!NOTE]
+> **Did you know?** Uranus rotates on its side — its axial tilt is 98 degrees, probably the result of a massive ancient collision. This means each pole gets around 42 years of continuous sunlight followed by 42 years of darkness. It is also the coldest planetary atmosphere in the solar system, reaching −224 °C, despite not being the farthest planet.
+
 ## Mission Briefing
 
 Uranus rotates on its side — unorthodox, and quietly powerful. MaaS is your model governance layer: token-gated access, usage tracking, and quota enforcement for any deployed model. Think of it as Mission Control issuing launch authorisations — not every crew member can fire the rockets whenever they want. This mission publishes your model through a governed API gateway and verifies that only authorised callers get through. 🔐🛸

@@ -1,5 +1,8 @@
 # Mission 5 — Jupiter · Experimenting
 
+> [!NOTE]
+> **Did you know?** Jupiter's Great Red Spot is a storm that has been raging for at least 350 years — and it is wide enough to swallow three Earths. Despite being the largest planet, Jupiter has the shortest day: it completes one full rotation in just under 10 hours. It also acts as the solar system's bouncer, its gravity deflecting or capturing many comets and asteroids that might otherwise head toward the inner planets.
+
 ## Mission Briefing
 
 Jupiter is the largest planet in the solar system — and this mission is the broadest in the Odyssey. You've crossed the asteroid belt. Now the Science Crew takes the helm. Jupiter is where experiments run at scale: Kubeflow Pipelines for reproducibility, MLflow for tracking, and Training Hub for fine-tuning. Connect the dots between data, models, and metrics. This is where good science becomes great engineering. 🔭🧪

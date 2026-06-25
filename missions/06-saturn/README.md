@@ -1,5 +1,8 @@
 # Mission 6 — Saturn · TrustyAI
 
+> [!NOTE]
+> **Did you know?** Saturn is the least dense planet in the solar system — less dense than liquid water. If you could find a bathtub large enough, Saturn would float. Its iconic rings are made mostly of ice and rock, but they are extraordinarily thin: up to 280,000 km wide yet only about 10 metres thick in places.
+
 ## Mission Briefing
 
 Saturn is encircled by rings — and this mission puts rings of trust around your AI. TrustyAI brings two critical guardrails to your stack: EvalHub for systematic model evaluation across benchmarks, and NeMo Guardrails for runtime prompt filtering. By the end of this mission, you'll know both *how good* your model is and *how safe* it is. Responsible AI isn't optional — it's load-bearing. 💫🛡️

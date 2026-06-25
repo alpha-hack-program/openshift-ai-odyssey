@@ -1,5 +1,8 @@
 # ☀️ Sun · OpenShift + OpenShift AI
 
+> [!NOTE]
+> **Did you know?** The Sun contains 99.86 % of all the mass in the solar system. Every planet, moon, asteroid, and comet combined makes up just the remaining 0.14 %. Everything in this Odyssey literally orbits around it.
+
 ## Mission Briefing
 
 Every star system needs a sun — and ours is OpenShift. This mission ignites the core: an OCP 4.20 cluster on AWS with Red Hat OpenShift AI 3.4 installed and ready for science. The cluster arrives pre-installed; your job is to configure it, install the AI stack, and hand the keys to the Science Crew. Without a functioning sun, nothing else in the solar system can orbit. Don't rush this one — a solid foundation means all future missions go smoothly. Countdown begins now. 🔥

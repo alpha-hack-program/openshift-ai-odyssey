@@ -1,5 +1,8 @@
 # Mission 1 — Mercury · Notebook Playground
 
+> [!NOTE]
+> **Did you know?** Mercury has no atmosphere, so temperatures swing between 430 °C (800 °F) during the day and −180 °C (−290 °F) at night — all in the same place. It is also the fastest planet, lapping the Sun in just 88 Earth days.
+
 ## Mission Briefing
 
 Mercury is the first planet from the Sun — small, fast, and close to the action. This mission is your first contact with the RHOAI science interface: workbenches. You'll spin up a Jupyter notebook environment, run your first AI-adjacent code, and prove that your workspace survives a restart. Think of it as lighting the engines for the first time. 🛸

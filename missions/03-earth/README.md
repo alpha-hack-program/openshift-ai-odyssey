@@ -1,5 +1,8 @@
 # Mission 3 — Earth · Model Serving
 
+> [!NOTE]
+> **Did you know?** Earth is the densest planet in the solar system and the only one not named after a Greek or Roman deity. "Earth" comes from Old English and Germanic roots meaning simply "the ground." It is also, so far, the only confirmed address for intelligence in the universe — though this cluster is working on that.
+
 ## Mission Briefing
 
 Earth is the home of life — and this mission brings your cluster to life with AI inference. You'll deploy a language model from the RHOAI model catalog and expose it as an API endpoint. No specific model is required yet (save the GPU monster for the Moon); the goal is to understand the serving stack — KServe, vLLM, and llm-d — and get a model talking. First contact with AI in production. 🌍🤖

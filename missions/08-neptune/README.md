@@ -1,5 +1,8 @@
 # Mission 8 — Neptune · Agentic RAG with OGX
 
+> [!NOTE]
+> **Did you know?** Neptune was the first planet discovered through mathematics rather than direct observation. Astronomers noticed Uranus was not moving quite as predicted and worked backwards to find the culprit — spotting Neptune in 1846 within one degree of where the equations said it would be. It also has the strongest winds in the solar system, reaching 2,100 km/h (1,300 mph).
+
 ## Mission Briefing
 
 Neptune is the last planet — cold, distant, and the most complex to reach. This mission is the culmination of the Odyssey: you'll deploy OGX (an OpenAI-compatible agentic API server), wire it to your model endpoint, upload documents to a vector store, and build a RAG application that retrieves from your own data. The agent reasons across documents, calls tools, and cites its sources. That's not just AI — that's enterprise-grade agentic intelligence running on your cluster. 🌊🤖

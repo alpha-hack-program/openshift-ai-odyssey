@@ -1,5 +1,8 @@
 # Mission 4 — Mars · Distributed Workloads
 
+> [!NOTE]
+> **Did you know?** Mars is home to Olympus Mons, the tallest volcano in the solar system at 21 km high and 600 km wide — roughly the size of France. It is so wide that if you stood on the rim, the opposite edge would be below the horizon. A Martian day (sol) is just 37 minutes longer than an Earth day, which made it easier for NASA to schedule rover operations.
+
 ## Mission Briefing
 
 Mars is the last frontier of the inner system — red, rugged, and demanding real engineering muscle. This mission transforms your cluster from a single-model server into a distributed AI training platform. You'll enable Kueue for workload queuing, configure hardware profiles, and submit your first multi-node training job. This is the last stop before the asteroid belt. Cross it only when everything here is working. ⚔️🪐

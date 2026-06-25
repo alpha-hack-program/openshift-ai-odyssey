@@ -1,6 +1,9 @@
 # 🌙 Moon · GPT-OSS-20B (Optional)
 
 > [!NOTE]
+> **Did you know?** The Moon is drifting away from Earth at about 3.8 cm per year — roughly the rate at which your fingernails grow. It formed around 4.5 billion years ago when a Mars-sized body smashed into the early Earth and the debris coalesced in orbit. Every Apollo mission left a retroreflector on the surface; scientists still bounce lasers off them today.
+
+> [!NOTE]
 > The Moon orbits Earth — this mission is **optional** and depends on having real GPU capacity. Skip it if your hardware cannot fit a 20B-parameter model and proceed directly to Mission 4 (Mars).
 
 ## Mission Briefing
