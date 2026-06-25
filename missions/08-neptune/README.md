@@ -9,10 +9,10 @@ Neptune is the last planet — cold, distant, and the most complex to reach. Thi
 
 ## Pre-launch Checklist
 
-- Mission 7 (Uranus) complete — a model endpoint is accessible (via MaaS or direct)
-- A deployed model endpoint accessible from inside the cluster (GPT-OSS-20B or any capable LLM)
+- ☀️ Sun mission complete — `DataScienceCluster` is `Ready`
+- 🌍 Earth mission complete — a model endpoint is reachable from inside the cluster (OGX uses it as its LLM backend)
+- 🪐 Uranus mission complete *(optional)* — use the MaaS endpoint as the OGX backend for a fully governed agentic API
 - `oc` access with `cluster-admin`
-- Vector store backend available (Milvus, PGVector, or built-in OGX vector stores)
 - Python 3.11 or later on your workstation (for the agentic starter kit)
 
 ## Flight Plan

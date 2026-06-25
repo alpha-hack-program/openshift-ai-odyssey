@@ -9,8 +9,8 @@ Mars is the last frontier of the inner system — red, rugged, and demanding rea
 
 ## Pre-launch Checklist
 
-- Mission 3 (Earth) complete — model serving is operational
-- GPU nodes available (real GPUs recommended for distributed training)
+- ☀️ Sun mission complete — `DataScienceCluster` is `Ready`
+- 🌋 Venus mission complete — at least one GPU node pool is available (real GPUs recommended for actual training; fake GPUs work for scheduling tests)
 - `cluster-admin` access to enable operators and configure quotas
 
 ## Flight Plan

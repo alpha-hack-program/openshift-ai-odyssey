@@ -9,11 +9,10 @@ Uranus rotates on its side — unorthodox, and quietly powerful. MaaS is your mo
 
 ## Pre-launch Checklist
 
-- Mission 6 (Saturn) complete — you have a deployed, evaluated model
-- A model endpoint available (GPT-OSS-20B from Moon recommended, or any Earth model)
+- ☀️ Sun mission complete — `DataScienceCluster` is `Ready`
+- 🌍 Earth mission complete — at least one model endpoint is deployed and serving inference
 - `oc` access with `cluster-admin`
-- Database secret for the MaaS gateway (PostgreSQL or equivalent)
-- TLS certificate available (or cluster wildcard cert)
+- Database available for the MaaS gateway (an in-cluster PostgreSQL ephemeral instance is enough for learning)
 
 ## Flight Plan
 

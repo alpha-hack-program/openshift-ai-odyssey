@@ -9,10 +9,10 @@ Jupiter is the largest planet in the solar system — and this mission is the br
 
 ## Pre-launch Checklist
 
-- Mission 4 (Mars) complete — Kueue and distributed training are operational
-- `datasciencepipelines` component enabled in `DataScienceCluster` (confirmed in Sun mission)
-- S3-compatible storage for pipeline artifacts (AWS S3, MinIO, or ODF — configured in Earth or Mars)
-- `MLFLOW_TRACKING_URI` accessible from inside the cluster
+- ☀️ Sun mission complete — `aipipelines` component enabled in `DataScienceCluster`
+- ♂️ Mars mission complete — Kueue and the training operator are enabled (needed for Training Hub jobs)
+- S3-compatible storage available for pipeline artifacts (AWS S3 bucket is sufficient)
+- `oc` access with `cluster-admin` privileges
 
 ## Flight Plan
 

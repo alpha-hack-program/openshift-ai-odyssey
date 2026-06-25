@@ -9,9 +9,10 @@ Saturn is encircled by rings — and this mission puts rings of trust around you
 
 ## Pre-launch Checklist
 
-- Mission 5 (Jupiter) complete — MLflow is configured (EvalHub logs to MLflow)
-- A deployed model endpoint available — ideally GPT-OSS-20B from the Moon, or any model from Earth
-- Baseline prompt responses saved from the Moon mission (for comparison with/without guardrails)
+- ☀️ Sun mission complete — `DataScienceCluster` is `Ready`
+- 🌍 Earth mission complete — at least one model endpoint is deployed and serving inference
+- `mlflowoperator` component enabled in the `DataScienceCluster` (needed for EvalHub metric logging) — can be enabled now if Jupiter has not been done yet
+- Baseline prompt/response pairs saved *(optional but useful — collect them from any deployed model before starting)*
 - `oc` access with `cluster-admin`
 
 ## Flight Plan

@@ -9,8 +9,8 @@ Venus is shrouded in heat and mystery — and so is the GPU. This mission electr
 
 ## Pre-launch Checklist
 
-- Mission 1 (Mercury) complete — workbench is running
-- AWS quota for GPU instances approved (Track A only) — check `g6` or `p3` limits in your region via the AWS console
+- ☀️ Sun mission complete — `DataScienceCluster` is `Ready` and the cluster has worker nodes available
+- AWS GPU quota approved *(Track A only)* — check `g6` or `p3` instance limits in your region via the AWS console
 - `oc` access with `cluster-admin` privileges
 
 ## Flight Plan

@@ -11,7 +11,6 @@ Mercury is the first planet from the Sun — small, fast, and close to the actio
 
 - ☀️ Sun mission complete — `DataScienceCluster` is `Ready` and dashboard is accessible
 - Team project created in the dashboard (e.g. `mission-control`)
-- Storage class available in the cluster (verified in the Sun mission)
 
 ## Flight Plan
 
