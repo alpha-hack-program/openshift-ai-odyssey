@@ -23,9 +23,9 @@ Like the real solar system, there is a divide between the **inner** and **outer*
 | **Science Crew** 💻 | CI/CD, middleware, app dev | Projects, notebooks, pipelines, models, and APIs |
 
 > [!IMPORTANT]
-> If you are a Red Hatter, you can order a lab environment on the [Red Hat Demo Platform](https://catalog.demo.redhat.com/catalog?item=babylon-catalog-prod/sandboxes-gpte.sandbox-open.prod&utm_source=webapp&utm_medium=share-link). Request environment `Red Hat Open Environments` > `AWS Blank Open Environment`
+> **Red Hatters:** Order your lab on the [Red Hat Demo Platform](https://catalog.demo.redhat.com/catalog/babylon-catalog-prod?item=babylon-catalog-prod/sandboxes-gpte.sandbox-ocp.prod&utm_source=webapp&utm_medium=share-link) — select **OpenShift on AWS Sandbox**. Key settings: activity *Practice / Enablement*, uncheck cert-manager, enable Configure Authentication, region `eu-central-1`, OCP version `4.20`, 1 control plane node, instance type `m6a.4xlarge`. See [📂 Sun mission dossier](missions/00-sun/README.md) for the full ordering checklist.
 
-**Prerequisites:** OpenShift Container Platform 4.20 on [AWS IPI](https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/installing_on_aws/index), cluster-admin access, and the [OpenShift AI 3.4 docs](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/3.4) handy.
+**Prerequisites:** OpenShift 4.20 on AWS with `cluster-admin` access and the [OpenShift AI 3.4 docs](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/3.4) handy.
 
 ---
 
@@ -35,7 +35,8 @@ Everything orbits from here. Goal: OCP 4.20 on AWS IPI with RHOAI 3.4 running on
 
 **Systems Engineering** ⚙️
 
-- Deploy or verify [OpenShift 4.20 on AWS IPI](https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/installing_on_aws/index)
+- Log in to the cluster (kubeadmin credentials provided by RHDP or your cluster admin)
+- Verify cluster health: `oc get nodes` and `oc get clusteroperators`
 - Install the [Red Hat OpenShift AI Operator](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/3.4/html/installing_and_uninstalling_openshift_ai_self-managed) (`stable-3.x` channel — latest GA)
 - Create a `DataScienceCluster` with core components (dashboard, workbenches, pipelines, kserve)
 - Verify storage classes and PVC provisioning for user workloads

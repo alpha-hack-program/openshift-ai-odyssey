@@ -1,57 +1,104 @@
 # ☀️ Sun · OpenShift + OpenShift AI
 
-> [!IMPORTANT]
-> If you are a Red Hatter, you can order a lab environment on the [Red Hat Demo Platform](https://catalog.demo.redhat.com/catalog?item=babylon-catalog-prod/sandboxes-gpte.sandbox-open.prod&utm_source=webapp&utm_medium=share-link). Request environment `Red Hat Open Environments` > `AWS Blank Open Environment`
-
 ## Mission Briefing
 
-Every star system needs a sun — and ours is OpenShift. This mission ignites the core: an OCP 4.20 cluster on AWS IPI with Red Hat OpenShift AI 3.4 installed and ready for science. Without a functioning sun, nothing else in the solar system can orbit. Don't rush this one — a solid foundation means all future missions go smoothly. Countdown begins now. 🔥
+Every star system needs a sun — and ours is OpenShift. This mission ignites the core: an OCP 4.20 cluster on AWS with Red Hat OpenShift AI 3.4 installed and ready for science. The cluster arrives pre-installed; your job is to configure it, install the AI stack, and hand the keys to the Science Crew. Without a functioning sun, nothing else in the solar system can orbit. Don't rush this one — a solid foundation means all future missions go smoothly. Countdown begins now. 🔥
 
 ## Pre-launch Checklist
 
-- AWS account with sufficient quota for the chosen instance types
-- `oc`, `aws` CLI, and `openshift-install` (or access to RHDP) available on your workstation
-- A pull secret from [console.redhat.com](https://console.redhat.com/openshift/install/pull-secret)
-- DNS zone accessible in Route 53 (required for AWS IPI)
+- `oc` CLI installed on your workstation ([download](https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable-4.20/))
+- Access to the cluster API URL and kubeadmin credentials (provided by RHDP or your cluster admin)
+- OpenShift 4.20 cluster running on AWS (see "Launch Sequence" below for provisioning options)
+
+## Launch Sequence — Obtain Your Cluster
+
+### Option A — Red Hatters: RHDP Catalog
+
+> [!IMPORTANT]
+> Order your lab environment from the [Red Hat Demo Platform](https://catalog.demo.redhat.com/catalog/babylon-catalog-prod?item=babylon-catalog-prod/sandboxes-gpte.sandbox-ocp.prod&utm_source=webapp&utm_medium=share-link) — select **OpenShift on AWS Sandbox**.
+
+When configuring the catalog request, use these settings:
+
+| Setting | Value |
+|---------|-------|
+| **Activity** | Practice / Enablement — Trying out a technical solution |
+| **Cert-manager** | **Uncheck** (do not install cert-manager) |
+| **Configure Authentication** | **Check** (enable) |
+| **Region** | `eu-central-1` |
+| **OpenShift Version** | `4.20` |
+| **Control Plane count** | `1` |
+| **Control Plane Instance Type** | `m6a.4xlarge` *(the default does not have sufficient compute for RHOAI and related operators)* |
+
+Submit the order and wait for the environment to provision (typically 20–40 minutes). You will receive:
+- Cluster console URL
+- kubeadmin credentials
+- A service account with cluster-admin privileges
+
+### Option B — Everyone else: Bring your own cluster
+
+You need an OpenShift 4.20 cluster on AWS. The cluster must have:
+- At least 3 worker nodes with a minimum of `m6a.4xlarge` instance type (or equivalent)
+- A default storage class that can provision PVCs (EBS `gp3` is recommended)
+- `cluster-admin` access
+
+If you do not have a cluster, follow the [Installing on AWS IPI](https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/installing_on_aws/index) documentation and return here once the cluster is up.
+
+---
 
 ## Flight Plan
 
 ### Systems Engineering ⚙️
 
-#### 1. Deploy OpenShift 4.20 on AWS IPI
+#### 1. Log in to the cluster
 
 ```bash
-# Download the installer
-curl -L https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable-4.20/openshift-install-linux.tar.gz | tar xz
+# Export the API URL provided by RHDP or your cluster admin
+export OCP_API="https://api.<cluster-name>.<domain>:6443"
 
-# Create install config
-./openshift-install create install-config --dir=./cluster
-
-# Deploy (takes ~40 min)
-./openshift-install create cluster --dir=./cluster --log-level=info
+# Log in as kubeadmin
+oc login "$OCP_API" -u kubeadmin -p <kubeadmin-password>
 ```
 
-Expected output when complete:
+Expected:
 ```
-INFO Install complete!
-INFO Access the OpenShift web-console here: https://console-openshift-console.apps.<cluster>.<domain>
-INFO Login to the console with user: kubeadmin, and password: <password>
+Login successful.
+You have access to N projects, the list has been suppressed.
 ```
 
 #### 2. Verify cluster health
 
 ```bash
-export KUBECONFIG=./cluster/auth/kubeconfig
 oc get nodes
 oc get clusteroperators
 ```
 
-Expected: all nodes `Ready`, all cluster operators `Available=True`.
+Expected: all nodes `Ready`, all cluster operators `Available=True, Progressing=False, Degraded=False`.
 
-#### 3. Install the OpenShift AI Operator
+#### 3. Create the RHOAI operator namespace
 
 ```bash
 cat <<EOF | oc apply -f -
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: redhat-ods-operator
+  labels:
+    opendatahub.io/generated-namespace: "true"
+EOF
+```
+
+#### 4. Install the Red Hat OpenShift AI Operator
+
+```bash
+cat <<EOF | oc apply -f -
+apiVersion: operators.coreos.com/v1alpha1
+kind: OperatorGroup
+metadata:
+  name: rhods-operator
+  namespace: redhat-ods-operator
+spec:
+  upgradeStrategy: Default
+---
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
@@ -73,10 +120,14 @@ oc get csv -n redhat-ods-operator -w
 
 Expected:
 ```
-rhods-operator.v3.x.x   Red Hat OpenShift AI   3.x.x   Succeeded
+NAME                      DISPLAY                  VERSION   PHASE
+rhods-operator.v3.x.x    Red Hat OpenShift AI     3.x.x     Succeeded
 ```
 
-#### 4. Create the DataScienceCluster
+> [!NOTE]
+> This step can take 5–10 minutes as the operator pod pulls its images. The CSV will transition through `Installing` before reaching `Succeeded`.
+
+#### 5. Create the DataScienceCluster
 
 ```bash
 cat <<EOF | oc apply -f -
@@ -102,22 +153,24 @@ spec:
 EOF
 ```
 
+Monitor progress:
 ```bash
 oc get datasciencecluster default-dsc -o jsonpath='{.status.phase}'
 ```
 
-Expected: `Ready`
+Expected: `Ready` (this may take several minutes while all component pods start).
 
-#### 5. Verify storage classes
+#### 6. Verify storage classes
 
 ```bash
 oc get storageclass
 ```
 
-Confirm at least one storage class is set as default (marked with `(default)`). If using ODF or a custom provisioner, verify it can provision PVCs:
+Confirm at least one storage class is marked `(default)`. On AWS with RHDP this is typically `gp3-csi`. Test that it can provision PVCs:
+
 ```bash
 oc new-project test-storage
-oc apply -f - <<EOF
+cat <<EOF | oc apply -f -
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -133,26 +186,28 @@ oc get pvc -n test-storage
 oc delete project test-storage
 ```
 
+Expected: PVC reaches `Bound` state within 30 seconds.
+
 ### Science Crew 💻
 
 #### 1. Log in to the OpenShift AI dashboard
 
 ```bash
-# Get dashboard URL
+# Get the dashboard route
 oc get route rhods-dashboard -n redhat-ods-applications -o jsonpath='{.spec.host}'
 ```
 
-Open the URL in a browser. Log in with your OpenShift credentials.
+Open the URL in a browser. Log in with your OpenShift credentials (kubeadmin or your configured identity provider).
 
-#### 2. Create a project
+#### 2. Create the team project
 
 In the dashboard: **Data Science Projects** → **Create project**
 
-Name it `mission-control` (or your team name). This project will be used throughout all missions.
+Name it `mission-control` (or your team name). This namespace is used throughout all missions.
 
 #### 3. Verify core sections appear
 
-Confirm the following sections are visible in your project:
+Confirm the following sections are visible inside the project:
 - **Workbenches**
 - **Pipelines**
 - **Models** (or Model Serving)
@@ -163,18 +218,20 @@ Confirm the following sections are visible in your project:
 - [ ] GO — `oc get clusteroperators` shows all operators `Available=True`
 - [ ] GO — `oc get csv -n redhat-ods-operator` shows operator as `Succeeded`
 - [ ] GO — `oc get datasciencecluster default-dsc -o jsonpath='{.status.phase}'` returns `Ready`
+- [ ] GO — `oc get storageclass` shows a default storage class
 - [ ] GO — Dashboard route is reachable in a browser
-- [ ] GO — Team project exists in the dashboard with Workbenches and Pipelines sections visible
+- [ ] GO — Team project `mission-control` exists with Workbenches and Pipelines sections visible
 
 ## Abort Conditions & Recovery
 
 | Symptom | Likely cause | Recovery procedure |
 |---------|-------------|--------------------|
-| `openshift-install` times out at bootstrap | VPC/security group misconfiguration or quota issue | Run `openshift-install gather bootstrap --dir=./cluster` to collect logs; check EC2 console for failed instances |
-| CSV stays in `Installing` | Operator dependency issue or image pull failure | `oc describe csv -n redhat-ods-operator` → look for `reason`; check `oc get events -n redhat-ods-operator` |
-| `DataScienceCluster` stays in `Progressing` | Component image pull or dependency (e.g. cert-manager) not ready | `oc get pods -n redhat-ods-applications` and check for `CrashLoopBackOff` or `ImagePullBackOff` |
-| Dashboard route returns 503 | Dashboard pod not yet running | `oc get pods -n redhat-ods-applications -l app=rhods-dashboard` — wait for `Running` |
+| `oc login` fails with `x509` error | Self-signed cluster cert | Add `--insecure-skip-tls-verify=true` to the login command; download the CA cert once logged in |
+| CSV stays in `Installing` | Operator image pull failure or dependency missing | `oc describe csv -n redhat-ods-operator` → check `reason`; `oc get events -n redhat-ods-operator --sort-by='.lastTimestamp'` |
+| `DataScienceCluster` stays in `Progressing` | Component image pull failing or cert-manager missing | `oc get pods -n redhat-ods-applications` — identify pods in `CrashLoopBackOff` or `ImagePullBackOff` and check their logs |
+| Dashboard route returns 503 | Dashboard pod not yet running | `oc get pods -n redhat-ods-applications -l app=rhods-dashboard` — wait for `Running`; check events if stuck |
+| PVC stays in `Pending` | No default storage class or provisioner not ready | `oc describe pvc test-pvc -n test-storage` → check events; verify `gp3-csi` provisioner pod is running |
 
 ## Mission Success Criteria
 
-OCP 4.20 is running on AWS, the Red Hat OpenShift AI Operator is installed on the `stable-3.x` channel, the `DataScienceCluster` is `Ready`, the dashboard is reachable, and your team project is created.
+An OpenShift 4.20 cluster is running on AWS, the Red Hat OpenShift AI Operator is installed on the `stable-3.x` channel, the `DataScienceCluster` is `Ready`, the dashboard is reachable, PVC provisioning works, and the team project `mission-control` is created.
