@@ -38,7 +38,6 @@ Submit the order and wait for the environment to provision (typically 20–40 mi
 
 You need an OpenShift 4.20 cluster on AWS. The cluster must have:
 - At least 3 worker nodes with a minimum of `m6a.4xlarge` instance type (or equivalent)
-- A default storage class that can provision PVCs (EBS `gp3` is recommended)
 - `cluster-admin` access
 
 If you do not have a cluster, follow the [Installing on AWS IPI](https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/installing_on_aws/index) documentation and return here once the cluster is up.
@@ -212,7 +211,6 @@ Confirm the following sections are visible inside the project:
 - [ ] GO — `oc get clusteroperators` shows all operators `Available=True`
 - [ ] GO — `oc get csv -n redhat-ods-operator` shows operator as `Succeeded`
 - [ ] GO — `oc get datasciencecluster default-dsc -o jsonpath='{.status.phase}'` returns `Ready`
-- [ ] GO — `oc get storageclass` shows a default storage class
 - [ ] GO — Dashboard route is reachable in a browser
 - [ ] GO — Team project `mission-control` exists with Workbenches and Pipelines sections visible
 
@@ -224,8 +222,7 @@ Confirm the following sections are visible inside the project:
 | CSV stays in `Installing` | Operator image pull failure or dependency missing | `oc describe csv -n redhat-ods-operator` → check `reason`; `oc get events -n redhat-ods-operator --sort-by='.lastTimestamp'` |
 | `DataScienceCluster` stays in `Progressing` | Component image pull failing or cert-manager missing | `oc get pods -n redhat-ods-applications` — identify pods in `CrashLoopBackOff` or `ImagePullBackOff` and check their logs |
 | Dashboard route returns 503 | Dashboard pod not yet running | `oc get pods -n redhat-ods-applications -l app=rhods-dashboard` — wait for `Running`; check events if stuck |
-| PVC stays in `Pending` | No default storage class or provisioner not ready | `oc describe pvc test-pvc -n test-storage` → check events; verify `gp3-csi` provisioner pod is running |
 
 ## Mission Success Criteria
 
-An OpenShift 4.20 cluster is running on AWS, the Red Hat OpenShift AI Operator is installed on the `stable-3.x` channel, the `DataScienceCluster` is `Ready`, the dashboard is reachable, PVC provisioning works, and the team project `mission-control` is created.
+An OpenShift 4.20 cluster is running on AWS, the Red Hat OpenShift AI Operator is installed on the `stable-3.x` channel, the `DataScienceCluster` is `Ready`, the dashboard is reachable, and the team project `mission-control` is created.
